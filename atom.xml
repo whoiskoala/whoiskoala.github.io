@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2022-07-09T16:45:07.898Z</updated>
+  <updated>2022-07-09T17:14:27.630Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -21,12 +21,12 @@
     <link href="http://example.com/2022/07/09/dsg/"/>
     <id>http://example.com/2022/07/09/dsg/</id>
     <published>2022-07-09T16:34:26.000Z</published>
-    <updated>2022-07-09T16:45:07.898Z</updated>
+    <updated>2022-07-09T17:14:27.630Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="abstract"><a href="#abstract" class="headerlink" title="abstract"></a>abstract</h2>]]></content>
+    <content type="html"><![CDATA[<h3 id="可微场景图原论文连接-https-arxiv-org-abs-1902-10200"><a href="#可微场景图原论文连接-https-arxiv-org-abs-1902-10200" class="headerlink" title="可微场景图原论文连接 https://arxiv.org/abs/1902.10200"></a>可微场景图原论文连接 <a href="https://arxiv.org/abs/1902.10200">https://arxiv.org/abs/1902.10200</a></h3><h2 id="abstract"><a href="#abstract" class="headerlink" title="abstract"></a>abstract</h2><p>复杂视觉场景的推理涉及对实体及其关系的感知。场景图(SGs)通过给实体(node)和关系(edge)分配标签，为推理任务提供了一种自然的表示。基于SGs的推理系统的训练通常分为两个步骤:首先，一个模型被训练来根据图像预测场景图，然后一个单独的模型被训练来根据预测的场景图进行推理。然而，以端到端方式训练这种系统似乎更可取。我们要解决的挑战是：场景图表示是不可微的，因此，还不知道怎么使用场景图作为中间组件。本论文提出可微场景图(DSGs)，一种可微端到端优化的图像表示，只需要从下游任务的监督。DSGs为所有区域和区域对提供密集表示，并且不花费建模能力在图像中不包含对象或相关关系的区域。我们评估了在三个基准数据集中识别参考关系（RR）的挑战性任务的模型：Visual Genome，VRD和CLEVR。将DSG作为中间表示会带来最前沿的表现。完整代码可在<a href="https://github.com/shikorab/dsg">https://github.com/shikorab/dsg</a>上找到。</p>]]></content>
     
     
-    <summary type="html">可微场景图[Differentiable Scene Graphs](https://arxiv.org/abs/1902.10200)</summary>
+    <summary type="html">可微场景图论文阅读笔记</summary>
     
     
     

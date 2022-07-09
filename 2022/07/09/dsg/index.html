@@ -20,15 +20,15 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="可微场景图[Differentiable Scene Graphs](https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;1902.10200)">
+  <meta name="description" content="可微场景图论文阅读笔记">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Differentiable Scene Graphs 论文笔记">
 <meta property="og:url" content="http://example.com/2022/07/09/dsg/index.html">
 <meta property="og:site_name" content="xx">
-<meta property="og:description" content="可微场景图[Differentiable Scene Graphs](https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;1902.10200)">
+<meta property="og:description" content="可微场景图论文阅读笔记">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-07-09T16:34:26.000Z">
-<meta property="article:modified_time" content="2022-07-09T16:45:07.898Z">
+<meta property="article:modified_time" content="2022-07-09T17:14:27.630Z">
 <meta property="article:author" content="Zhuhao Zhou">
 <meta property="article:tag" content="SGG">
 <meta name="twitter:card" content="summary">
@@ -197,7 +197,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2022-07-09 17:34:26 / 修改时间：17:45:07" itemprop="dateCreated datePublished" datetime="2022-07-09T17:34:26+01:00">2022-07-09</time>
+              <time title="创建时间：2022-07-09 17:34:26 / 修改时间：18:14:27" itemprop="dateCreated datePublished" datetime="2022-07-09T17:34:26+01:00">2022-07-09</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -222,7 +222,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>8</span>
+              <span>462</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -231,7 +231,7 @@
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
               <span>1 分钟</span>
             </span>
-            <div class="post-description">可微场景图[Differentiable Scene Graphs](https://arxiv.org/abs/1902.10200)</div>
+            <div class="post-description">可微场景图论文阅读笔记</div>
 
         </div>
       </header>
@@ -242,7 +242,8 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="abstract"><a href="#abstract" class="headerlink" title="abstract"></a>abstract</h2>
+        <h3 id="可微场景图原论文连接-https-arxiv-org-abs-1902-10200"><a href="#可微场景图原论文连接-https-arxiv-org-abs-1902-10200" class="headerlink" title="可微场景图原论文连接 https://arxiv.org/abs/1902.10200"></a>可微场景图原论文连接 <a target="_blank" rel="noopener" href="https://arxiv.org/abs/1902.10200">https://arxiv.org/abs/1902.10200</a></h3><h2 id="abstract"><a href="#abstract" class="headerlink" title="abstract"></a>abstract</h2><p>复杂视觉场景的推理涉及对实体及其关系的感知。场景图(SGs)通过给实体(node)和关系(edge)分配标签，为推理任务提供了一种自然的表示。基于SGs的推理系统的训练通常分为两个步骤:首先，一个模型被训练来根据图像预测场景图，然后一个单独的模型被训练来根据预测的场景图进行推理。然而，以端到端方式训练这种系统似乎更可取。我们要解决的挑战是：场景图表示是不可微的，因此，还不知道怎么使用场景图作为中间组件。本论文提出可微场景图(DSGs)，一种可微端到端优化的图像表示，只需要从下游任务的监督。DSGs为所有区域和区域对提供密集表示，并且不花费建模能力在图像中不包含对象或相关关系的区域。我们评估了在三个基准数据集中识别参考关系（RR）的挑战性任务的模型：Visual Genome，VRD和CLEVR。将DSG作为中间表示会带来最前沿的表现。完整代码可在<a target="_blank" rel="noopener" href="https://github.com/shikorab/dsg">https://github.com/shikorab/dsg</a>上找到。</p>
+
     </div>
 
     
@@ -315,7 +316,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#abstract"><span class="nav-number">1.</span> <span class="nav-text">abstract</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%AF%E5%BE%AE%E5%9C%BA%E6%99%AF%E5%9B%BE%E5%8E%9F%E8%AE%BA%E6%96%87%E8%BF%9E%E6%8E%A5-https-arxiv-org-abs-1902-10200"><span class="nav-number">1.</span> <span class="nav-text">可微场景图原论文连接 https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;1902.10200</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#abstract"><span class="nav-number"></span> <span class="nav-text">abstract</span></a></div>
       </div>
       <!--/noindex-->
 
