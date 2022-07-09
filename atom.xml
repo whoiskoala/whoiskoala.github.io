@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2022-07-09T16:37:00.539Z</updated>
+  <updated>2022-07-09T16:43:07.769Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -17,19 +17,14 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>dsg</title>
+    <title>Differentiable Scene Graphs 论文笔记</title>
     <link href="http://example.com/2022/07/09/dsg/"/>
     <id>http://example.com/2022/07/09/dsg/</id>
     <published>2022-07-09T16:34:26.000Z</published>
-    <updated>2022-07-09T16:37:00.539Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="Differentiable-Scene-Graphs-论文笔记"><a href="#Differentiable-Scene-Graphs-论文笔记" class="headerlink" title="Differentiable Scene Graphs 论文笔记"></a>Differentiable Scene Graphs 论文笔记</h1>]]></content>
+    <updated>2022-07-09T16:43:07.769Z</updated>
     
     
-      
-      
-    <summary type="html">&lt;h1 id=&quot;Differentiable-Scene-Graphs-论文笔记&quot;&gt;&lt;a href=&quot;#Differentiable-Scene-Graphs-论文笔记&quot; class=&quot;headerlink&quot; title=&quot;Differentiable Scene Graphs </summary>
-      
+    <summary type="html">可微场景图[Differentiable Scene Graphs](https://arxiv.org/abs/1902.10200)</summary>
     
     
     
