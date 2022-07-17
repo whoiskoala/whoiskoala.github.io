@@ -29,8 +29,9 @@
 <meta property="og:description" content="可微场景图论文阅读笔记">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/2022/07/15/DSG-note/figure1_iccv.jpg">
+<meta property="og:image" content="http://example.com/2022/07/15/DSG-note/figure2.jpg">
 <meta property="article:published_time" content="2022-07-15T09:39:39.000Z">
-<meta property="article:modified_time" content="2022-07-16T01:28:18.536Z">
+<meta property="article:modified_time" content="2022-07-17T14:17:22.814Z">
 <meta property="article:author" content="Zhuhao Zhou">
 <meta property="article:tag" content="SGG">
 <meta name="twitter:card" content="summary">
@@ -210,7 +211,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-07-16 02:28:18" itemprop="dateModified" datetime="2022-07-16T02:28:18+01:00">2022-07-16</time>
+                <time title="修改时间：2022-07-17 15:17:22" itemprop="dateModified" datetime="2022-07-17T15:17:22+01:00">2022-07-17</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -235,14 +236,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>2.2k</span>
+              <span>3.4k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>2 分钟</span>
+              <span>3 分钟</span>
             </span>
             <div class="post-description">可微场景图论文阅读笔记</div>
 
@@ -280,6 +281,23 @@
 <p>在我们的模型中，我们把这个任务分成两个并行优化的部分。我们微调边框的位置，使它们紧密地覆盖实体，我们还将每个边框标记为以下四种可能的标签之一。标签Subject和Object对应于查询中的s和o实体。Other标签对应的是包含非查询主体或对象的实体(例如，人或任何其他类别，可以作为查询的主体或对象出现在查询中)的框。最后，标签Background对应于不包含实体的盒子。我们将上述两个模块称为Box Refiner和referentrelationships Classifier。</p>
 <h2 id="differentiable-scene-graphs">Differentiable Scene Graphs</h2>
 <hr>
+<p>这一部分首先讨论了与标准场景图相比，使用可微场景图的中间表示的动机和潜在优势。然后，我们解释dsg如何适应我们的模型的整个体系结构。 ### Why use intermediate DSG layers?</p>
+<p>一个完美的场景图(表示所有的实体和关系)捕捉了视觉推理所需的大部分信息，因此应该是有用的中间表示。这样的SG可以被下游的推理算法使用，使用预测的SG作为输入。不幸的是，学习预测任何下游任务的完美场景图是不可能的。首先，很少有足够的数据来训练好的SG预测者，其次，学习以一种独立于下游任务的方式来预测SGs，往往会产生不太相关的SGs。</p>
+<p>相反，我们提出了一个中间表示，我们称之为可微场景图层(DSG)。DSG捕获场景图中的关系信息，但可以通过特定任务的方式进行端到端训练(图2)。与SGs一样，DSG保留视觉实体及其关系的描述符。与SGs不同的是，SGs的节点和边是用离散值(标签)标注的，DSG包含一个密集分布的表示向量，用于每个检测到的实体(称为节点描述符)和每对实体(称为边缘描述符)。这些表示本身就是输入图像的学习函数(详见补充)。与SGs一样，DSG只描述了涵盖利益实体及其关系的候选方框。与SGs不同，每个DSG描述符不仅捕获一个节点的本地信息，而且还捕获其上下文的信息。最重要的是，由于dsg是可微的，它们被用作下游视觉推理模块(在我们的例子中，一个引用环关系模块)的输入。</p>
+<p>DSGs提供了几种计算和建模方面的优势：</p>
+<p><strong>可微性。</strong> 由于节点描述子和边缘描述子是被检测框的可微函数，并被送入可微推理模块，因此可以使用梯度下降法对整个管道进行训练。</p>
+<p><strong>密集的描述符。</strong> 通过保持节点和边的密集描述符，DSG保留了更多关于节点和边可能语义的信息，而不是过早地采用硬稀疏表示。这使得它能够更好地适应下游任务</p>
+<p><strong>使用下游任务进行监督。</strong> 为训练场景图收集监督的标签是艰难而昂贵的。可以使用可用于下游任务的培训数据对DSGs进行训练，从而节省了昂贵的标签工作。另一方面，当标记的场景图可用于给定图像时，可以使用附加的损失组件在训练DSG时使用该数据。</p>
+<p><strong>整体表示。</strong> DSG描述符是通过使用图神经网络从整个图像中集成全局信息来计算的（请参阅补充材料）。整个图像中的信息提高了对象和关系描述符的准确性。</p>
+<center>
+<img data-src="figure2.jpg" width="50%"> <br>
+<div style="color:orange; 
+    display: inline-block;
+    color: #999;
+    padding: 2px;">
+<p>图2。拟定的架构。输入由一个图像和一个关系查询组成，三元组主体、关系、对象。(1)检测器产生一组包围盒建议。(2) ROI-Align层使用方框从骨干网中提取对象特征。并行地，每一对方框建议用于计算联合方框，并以与对象特征相同的方式提取成对特征。(3)这些特征被用作可微分场景图生成模块的输入，该模块输出微分场景图，这是一组节点和边缘特征，由对输入特征应用图卷积网络产生。(4) DSG用于细化原始框建议，以及引用关系分类器，它将每个包围框建议分类为主题、对象、其他或背景。如果该建议出现在该图像的另一个查询关系中，则建议框的地面真实标签将为Other。否则地面真实标签将是Background。</p>
+</div>
+</center>
 
     </div>
 
@@ -431,13 +449,13 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">2k</span>
+    <span title="站点总字数">3k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">2 分钟</span>
+    <span title="站点阅读时长">3 分钟</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>
