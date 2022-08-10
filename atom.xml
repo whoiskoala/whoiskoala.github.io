@@ -3,11 +3,11 @@
   <title>zhouzhou🥣️</title>
   
   
-  <link href="http://example.com/atom.xml" rel="self"/>
+  <link href="https://whoiskoala.github.io/atom.xml" rel="self"/>
   
-  <link href="http://example.com/"/>
+  <link href="https://whoiskoala.github.io/"/>
   <updated>2022-08-10T23:09:17.583Z</updated>
-  <id>http://example.com/</id>
+  <id>https://whoiskoala.github.io/</id>
   
   <author>
     <name>Zhuhao Zhou</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>colab_1</title>
-    <link href="http://example.com/2022/08/10/colab-1/"/>
-    <id>http://example.com/2022/08/10/colab-1/</id>
+    <link href="https://whoiskoala.github.io/2022/08/10/colab-1/"/>
+    <id>https://whoiskoala.github.io/2022/08/10/colab-1/</id>
     <published>2022-08-10T21:53:19.000Z</published>
     <updated>2022-08-10T23:09:17.583Z</updated>
     
@@ -30,17 +30,17 @@
     
     
     
-    <category term="问题解决记录" scheme="http://example.com/categories/%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E8%AE%B0%E5%BD%95/"/>
+    <category term="问题解决记录" scheme="https://whoiskoala.github.io/categories/%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E8%AE%B0%E5%BD%95/"/>
     
     
-    <category term="colab" scheme="http://example.com/tags/colab/"/>
+    <category term="colab" scheme="https://whoiskoala.github.io/tags/colab/"/>
     
   </entry>
   
   <entry>
     <title>Ubuntu nvidia-drive 修复记录</title>
-    <link href="http://example.com/2022/08/04/n/"/>
-    <id>http://example.com/2022/08/04/n/</id>
+    <link href="https://whoiskoala.github.io/2022/08/04/n/"/>
+    <id>https://whoiskoala.github.io/2022/08/04/n/</id>
     <published>2022-08-04T13:43:58.000Z</published>
     <updated>2022-08-04T14:33:47.149Z</updated>
     
@@ -51,17 +51,17 @@
     
     
     
-    <category term="问题解决记录" scheme="http://example.com/categories/%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E8%AE%B0%E5%BD%95/"/>
+    <category term="问题解决记录" scheme="https://whoiskoala.github.io/categories/%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E8%AE%B0%E5%BD%95/"/>
     
     
-    <category term="NVIDIA-drive" scheme="http://example.com/tags/NVIDIA-drive/"/>
+    <category term="NVIDIA-drive" scheme="https://whoiskoala.github.io/tags/NVIDIA-drive/"/>
     
   </entry>
   
   <entry>
     <title>Differentiable Scene Graphs 论文笔记</title>
-    <link href="http://example.com/2022/07/15/DSG-note/"/>
-    <id>http://example.com/2022/07/15/DSG-note/</id>
+    <link href="https://whoiskoala.github.io/2022/07/15/DSG-note/"/>
+    <id>https://whoiskoala.github.io/2022/07/15/DSG-note/</id>
     <published>2022-07-15T09:39:39.000Z</published>
     <updated>2022-08-08T00:47:13.364Z</updated>
     
@@ -72,10 +72,10 @@
     
     
     
-    <category term="论文笔记" scheme="http://example.com/categories/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/"/>
+    <category term="论文笔记" scheme="https://whoiskoala.github.io/categories/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/"/>
     
     
-    <category term="SGG" scheme="http://example.com/tags/SGG/"/>
+    <category term="SGG" scheme="https://whoiskoala.github.io/tags/SGG/"/>
     
   </entry>
   
