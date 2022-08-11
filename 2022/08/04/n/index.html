@@ -299,6 +299,7 @@
 
           </div>
           
+    <div class="comments" id="gitalk-container"></div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -564,6 +565,26 @@
     
 
   
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : '74a77020639c8060366e',
+      clientSecret: '11d3fb55669019671bf557e0388565dad1a0b554',
+      repo        : 'whoiskoala.github.io',
+      owner       : 'whoiskoala',
+      admin       : ['whoiskoala'],
+      id          : '9bffc9c14c362e8bf4a605ebff236415',
+        language: 'zh-CN',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
 
   
   
