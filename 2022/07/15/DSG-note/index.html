@@ -30,8 +30,9 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://whoiskoala.github.io/2022/07/15/DSG-note/figure1_iccv.jpg">
 <meta property="og:image" content="https://whoiskoala.github.io/2022/07/15/DSG-note/figure2.jpg">
+<meta property="og:image" content="https://whoiskoala.github.io/2022/07/15/DSG-note/figure3.jpg">
 <meta property="article:published_time" content="2022-07-15T09:39:39.000Z">
-<meta property="article:modified_time" content="2022-08-08T00:47:13.364Z">
+<meta property="article:modified_time" content="2022-08-13T11:17:27.514Z">
 <meta property="article:author" content="Zhuhao Zhou">
 <meta property="article:tag" content="SGG">
 <meta name="twitter:card" content="summary">
@@ -211,7 +212,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-08-08 01:47:13" itemprop="dateModified" datetime="2022-08-08T01:47:13+01:00">2022-08-08</time>
+                <time title="修改时间：2022-08-13 12:17:27" itemprop="dateModified" datetime="2022-08-13T12:17:27+01:00">2022-08-13</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -236,14 +237,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>4.5k</span>
+              <span>5.5k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>4 分钟</span>
+              <span>5 分钟</span>
             </span>
             <div class="post-description">可微场景图论文阅读笔记</div>
 
@@ -302,7 +303,20 @@
 <p>我们现在描述如何将dsg与其他模块结合起来解决视觉推理任务。模型的结构如图2所示。首先，模型提取图像中实体和关系的边界框。接下来，它在这些边界框上创建一个可微分的场景图。然后，两个输出模块使用DSG特性，目的是回答一个引用关系查询:一个Box Refiner模块对相关实体的边界框进行细化，一个参考关系分类器模块对每个框进行分类，分别为Subject、Object、Other或background.</p>
 <p><strong>对象探测器.</strong> 我们使用standard region proposal network(RPN)来检测候选实体，并用<span class="math inline">\(b_{1}\)</span>，…，<span class="math inline">\(b_{B}\)</span> (<span class="math inline">\(B\)</span>可能因图像而异)。我们还为每个方框提取特征向量<span class="math inline">\(f_{i}\)</span>，并将其与方框坐标连接，得到<span class="math inline">\(zi = [f_{i};b_{i}]\)</span></p>
 <p><strong>关系特征提取器。</strong> 给定任意两个边界盒<span class="math inline">\(b_{i}\)</span>和<span class="math inline">\(b_{j}\)</span>，我们考虑包含这两个盒(它们的并盒)的最小盒。我们用<span class="math inline">\(b_{i,j}\)</span>表示这个关系框，用<span class="math inline">\(f_{i,j}\)</span>表示它的特征。最后，我们用<span class="math inline">\(z_{i,j} = [f_{i,j};b_{i,j}]\)</span>表示特征<span class="math inline">\(f_{i,j}\)</span>和框坐标<span class="math inline">\(b_{i,j}\)</span>的拼接.</p>
-<p><strong>可微的场景图生成器。</strong> 如上所述，DSG生成器的目标是将上述特征<span class="math inline">\(z_{i}\)</span>和<span class="math inline">\(z_{i,j}\)</span>转换为底层场景图的可微表示。即，将这些特征映射到一组新的密集向量<span class="math inline">\(z^{&#39;}_{i}\)</span>和<span class="math inline">\(z^{&#39;}_{i,j}\)</span>表示实体和关系。这种映射旨在结合每个特征向量的相关上下文。也就是说，表示zi包含关于第i个实体的信息，以及它的图像范围的上下文。有各种可能的方法来实现这种映射。这里我们使用[17]提出的模型，它使用图神经网络进行这种转换(参见补充材料)。 <strong>多任务目标</strong> 在许多领域，多任务目标训练可以提高单独任务的准确性，因为辅助任务作为正则化任务运行，推动内部表示远离过拟合，并向捕获输入的有用属性。我们在这里遵循这个想法并定义了一个多任务目标，它有三个组成部分:(a)引用关系分类器将方框匹配到主题和对象查询术语。(b) Box Refiner预测精确的紧密包围盒。(c)如果有相关的真实情况，包装盒标签识别包装盒中的视觉实体。 图3说明了前两个组件的效果，以及它们如何一起操作来细化边界框并将它们与查询条件匹配。具体来说，图3c显示了框细化如何产生围绕对象和主题紧密的框，图3d显示了RR分类如何匹配查询条件的框。</p>
+<p><strong>可微的场景图生成器。</strong> 如上所述，DSG生成器的目标是将上述特征<span class="math inline">\(z_{i}\)</span>和<span class="math inline">\(z_{i,j}\)</span>转换为底层场景图的可微表示。即，将这些特征映射到一组新的密集向量<span class="math inline">\(z^{&#39;}_{i}\)</span>和<span class="math inline">\(z^{&#39;}_{i,j}\)</span>表示实体和关系。这种映射旨在结合每个特征向量的相关上下文。也就是说，表示zi包含关于第i个实体的信息，以及它的图像范围的上下文。有各种可能的方法来实现这种映射。这里我们使用[17]提出的模型，它使用图神经网络进行这种转换(参见补充材料)。</p>
+<p><strong>多任务目标</strong> 在许多领域，多任务目标训练可以提高单独任务的准确性，因为辅助任务作为正则化任务运行，推动内部表示远离过拟合，并向捕获输入的有用属性。我们在这里遵循这个想法并定义了一个多任务目标，它有三个组成部分:(a)Referring Relationships Classifier将方框匹配到主题和对象查询术语。(b) Box Refiner预测精确的紧密包围盒。(c) A Box Labeler 识别盒子中的视觉实体，如果相关的background是可用的.</p>
+<p>图3说明了前两个组件的效果，以及它们如何一起操作来细化边界框并将它们与查询条件匹配。具体来说，图3c显示了框细化如何产生围绕对象和主题紧密的框，图3d显示了RR分类如何匹配查询条件的框。</p>
+<center>
+<img data-src="figure3.jpg" width="50%"> <br>
+<div style="color:orange; 
+    display: inline-block;
+    color: #999;
+    padding: 2px;">
+<p>图3。box refinement和RR分类的效果。(a)将DSG网络应用于输入图像。(b)物体探测器组件生成图像中实体的框建议。(c) RR分类器组件使用来自DSG的信息将候选框标记为对象或主体实体。然后，盒子细化组件也使用DSG信息，这次是为了改进那些被RR分类器标记为实体的盒子的位置。在这里，盒子被调整为专注于图像中最相关的实体:两个人、冲浪板、天空和海洋。(d)一旦RR分类器标注实体框，它可以正确引用查询中的实体cloud, in, sky(绿色的是天空，紫色的是云)。(e)分类为背景的候选方框示例。</p>
+</div>
+</center>
+<p><strong>(A) Referring Relationships Classifier</strong>. 给出一个DSG表示，我们用它来回答引用关系查询。回想一下，一个RR查询主题、关系、对象的输出应该是边界框，包含了参与查询关系的主题和对象。我们的模型已经计算了<span class="math inline">\(B\)</span>边界框<span class="math inline">\(b_{i}\)</span>，以及表示每个盒子的<span class="math inline">\(z_{i}^{&#39;}\)</span>。接下来，我们使用一个预测模型<span class="math inline">\(F_{RRC} (z_{i}^{&#39;},q)\)</span>，它作为描述边界框和查询的输入特征，输出四个标签{Subject, Object, Other, Background}中的一个(参见第2节)。用<span class="math inline">\(r_{i} \in R^{4}\)</span>表示这个分类器为第i框生成的对数。输出集 <span class="math inline">\(B_{s}\)</span>(或<span class="math inline">\(B_{o}\)</span>)只是分类为Subject(或Object)的边框集。详见补充资料了解进一步的实施细节。</p>
+<p><strong>(B) Box Refiner.</strong> DSG还用于进一步细化由RPN网络生成的边界盒。这个想法是关于图像上下文的额外知识可以用来改进给定实体的坐标。这是通过一个网络<span class="math inline">\(F_{BR}(b_{i}, z_{i}^{&#39;})\)</span>来完成的，它接受RPN框坐标和框<span class="math inline">\(i\)</span>的可微表示<span class="math inline">\(z_{i}\)</span>作为输入，并输出新的边界框坐标。图3为箱体细化的说明,进一步细节的详见补充材料 <strong>(C) Optional auxiliary losses: Scene-Graph Labeling.</strong> 除了上面描述的Box Refiner和引用关系分类器模块之外，如果在训练时可用，还可以对实体和关系的标签进行监督。具体来说，我们训练一个对象识别分类器对盒子进行操作，该分类器预测每个盒子的标签。该分类器以多任务的方式被训练为辅助损失，并在下面详细描</p>
 
     </div>
 
@@ -462,13 +476,13 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">5k</span>
+    <span title="站点总字数">6k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">5 分钟</span>
+    <span title="站点阅读时长">6 分钟</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>
